@@ -13,13 +13,6 @@ export const sliderData = [
 		title: "Health",
 		subTitle: "Build a healthy habit",
 		gifURL:
-			"https://raw.githubusercontent.com/sonishreyas/ripple-habits/feat/home-page/src/media/run.gif",
-	},
-	{
-		id: uuid(),
-		title: "Health",
-		subTitle: "Build a healthy habit",
-		gifURL:
 			"https://raw.githubusercontent.com/sonishreyas/ripple-habits/feat/home-page/src/media/healthy-food.gif",
 	},
 	{

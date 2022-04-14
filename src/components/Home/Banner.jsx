@@ -19,8 +19,9 @@ const Banner = () => {
 	};
 	const moveIndex = (index) => setSlideIndex(index);
 	useEffect(() => {
-		setInterval(nextSlide, 15000);
-	}, []);
+		clearTimeout();
+		setTimeout(nextSlide, 15000);
+	}, [slideIndex]);
 	return (
 		<>
 			<article className="background-image-container ">
