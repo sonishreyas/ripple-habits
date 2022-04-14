@@ -4,14 +4,16 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
-import { ThemeProvider } from "./context";
+import { NavbarProvider, ThemeProvider } from "./context";
 // Call make Server
 makeServer();
 ReactDOM.render(
 	<React.StrictMode>
 		<Router>
 			<ThemeProvider>
-				<App />
+				<NavbarProvider>
+					<App />
+				</NavbarProvider>
 			</ThemeProvider>
 		</Router>
 	</React.StrictMode>,

@@ -1,14 +1,20 @@
 import { Link } from "react-router-dom";
-import { useTheme } from "../../context";
+import { useNavbar, useTheme } from "../../context";
 
 const Header = () => {
-	const { themeIcon, handleSetTheme } = useTheme();
+	const { handleSetTheme, themeIcon } = useTheme();
+	const { setShowNavbar } = useNavbar();
+
+	const handleShowNavbar = () => setShowNavbar(true);
 	return (
 		<header className="header header-shadow flex-column">
 			<div className="flex-row justify-content-space-between align-center w-100">
 				<div className="brand-info flex-row justify-content-center align-center flex-gap-1 m-5">
 					<section>
-						<i className="fas fa-bars header-nav-icon"></i>
+						<i
+							className="fas fa-bars header-nav-icon"
+							onClick={handleShowNavbar}
+						></i>
 					</section>
 					<Link to={"/"} className="no-link header-brand">
 						<img
@@ -21,10 +27,38 @@ const Header = () => {
 				</div>
 				<div className="social-icon-container flex-row align-center flex-gap-2">
 					<ul className="no-list spaced-list flex-row align-center flex-gap-2 mx-5">
-						<li className="header-nav-icons h-auto pr-2">
-							<span className="badge-icon">
+						<li className="header-nav-icons h-auto pr-2">Home</li>
+						<li className="header-nav-icons h-auto pr-2">Dashboard</li>
+						<li className="header-nav-icons h-auto pr-2">My Habits</li>
+						<li className="header-nav-icons h-auto pr-2">Sign In</li>
+						<li className="header-them-icons h-auto pr-2 flex-row justify-content-center align-center flex-gap-1">
+							<span className="social">
 								<i
-									className={`fas fa-${themeIcon} theme-icon badge-icon`}
+									className={`fas fa-sun theme-icon social`}
+									aria-label="dark/light theme icon"
+								></i>
+							</span>
+							<section className="toggle-button-container text-center">
+								<label className="switch">
+									<input
+										type="checkbox"
+										aria-label="Toggle Choice"
+										onChange={handleSetTheme}
+									/>
+									<span className="slider b-radius-4"></span>
+								</label>
+							</section>
+							<span className="social">
+								<i
+									className={`fas fa-moon theme-icon social`}
+									aria-label="dark/light theme icon"
+								></i>
+							</span>
+						</li>
+						<li className="header-theme-small-icon h-auto pr-2">
+							<span className="social">
+								<i
+									className={`fas fa-${themeIcon} theme-icon social`}
 									aria-label="dark/light theme icon"
 									onClick={handleSetTheme}
 								></i>
