@@ -45,5 +45,11 @@
   font-size: 2.5rem;
   color: var(--secondary-background-color-light);
   position: relative;
-  top: -35rem;
+  top: -40vh;
+}
+
+.rui-main--heading-container, .rui-main--sub-heading {
+  padding: var(--p-0);
+  margin: var(--m-0);
+  border-bottom: var(--b-0);
 }
