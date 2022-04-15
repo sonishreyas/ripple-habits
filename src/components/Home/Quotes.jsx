@@ -2,7 +2,7 @@ import { useGetQuotesHandler } from "../../custom-hooks";
 const Quotes = () => {
 	const { quotesData } = useGetQuotesHandler();
 	return (
-		<div className="rui-main--heading-container no-border w-100 mx-10 p-0 my-0 flex-column justify-content-center align-center">
+		<div className="rui-main--heading-container no-border w-100 mx-10 p-0 my-0 flex-column justify-content-center align-center flex-wrap">
 			<h2 className="rui-main--heading home-heading text-bold w-100">
 				Quote of the Day
 			</h2>

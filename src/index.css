@@ -94,6 +94,30 @@ input:checked + .slider::before {
 .vertical-tabs-content {
   display: block;
 }
+
+.nav-container {
+  padding: var(--p-0);
+	z-index: var(--max-z-index);
+}
+
+.nav-background {
+	height: 100%;	
+  grid-column: 1/13;
+  grid-row: 1/13;
+	background-color: var(--tertiary-color);
+	opacity: 0.5;
+}
+
+.nav-content {
+  height: 100%;	
+  grid-column: 1/6;
+  grid-row: 1/13;
+}
+
+.grid-container .nav-container {
+  grid-column: 1/13;
+  grid-row: 1/13;
+}
 @media screen and (max-width: 1180px) {
   .header-nav-icon {
       display: none;
@@ -111,13 +135,14 @@ input:checked + .slider::before {
   }
   .grid-container .nav {
 		height: 100%;
-    width: 20rem;
+    width: 22rem;
 		grid-column: 1/6;
 		grid-row: 1/13;
 		overflow: hidden;
 		background: var(--primary-color);
 		z-index: var(--max-z-index);
 		visibility: visible;
+    
 	}
 }
 @media screen and (max-width: 400px) {

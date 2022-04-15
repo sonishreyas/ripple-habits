@@ -36,7 +36,11 @@ const Header = () => {
 								Home
 							</NavLink>
 						</li>
-						<li className="header-nav-icons h-auto pr-2">Dashboard</li>
+						<li className="header-nav-icons h-auto pr-2">
+							<NavLink to={"/dashboard"} className={getActiveClass}>
+								Dashboard
+							</NavLink>
+						</li>
 						<li className="header-nav-icons h-auto pr-2">
 							<NavLink to={"/habits"} className={getActiveClass}>
 								My Habits
