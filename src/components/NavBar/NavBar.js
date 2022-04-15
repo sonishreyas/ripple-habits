@@ -24,8 +24,23 @@ const NavBar = () => {
 					</section>
 				</li>
 				<li className="rui-drawer-content">
-					<a href="https://ripple-ui.netlify.app/" className="rui-drawer-links">
+					<a href="" className="rui-drawer-links">
 						<span className="rui-drawer-content--text">Home</span>
+					</a>
+				</li>
+				<li className="rui-drawer-content">
+					<a href="" className="rui-drawer-links">
+						<span className="rui-drawer-content--text">Dashboard</span>
+					</a>
+				</li>
+				<li className="rui-drawer-content">
+					<a href="" className="rui-drawer-links">
+						<span className="rui-drawer-content--text">My Habits</span>
+					</a>
+				</li>
+				<li className="rui-drawer-content">
+					<a href="" className="rui-drawer-links">
+						<span className="rui-drawer-content--text">SignIn</span>
 					</a>
 				</li>
 			</ul>
