@@ -19,8 +19,15 @@ const Banner = () => {
 	};
 	const moveIndex = (index) => setSlideIndex(index);
 	useEffect(() => {
+		const moveSlide = () => {
+			if (slideIndex >= sliderData.length) {
+				setSlideIndex(1);
+			} else {
+				setSlideIndex(slideIndex + 1);
+			}
+		};
 		clearTimeout();
-		setTimeout(nextSlide, 15000);
+		setTimeout(moveSlide, 15000);
 	}, [slideIndex]);
 	return (
 		<>

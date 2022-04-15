@@ -24,24 +24,24 @@ const NavBar = () => {
 					</section>
 				</li>
 				<li className="rui-drawer-content">
-					<a href="" className="rui-drawer-links">
+					<div className="rui-drawer-links">
 						<span className="rui-drawer-content--text">Home</span>
-					</a>
+					</div>
 				</li>
 				<li className="rui-drawer-content">
-					<a href="" className="rui-drawer-links">
+					<div className="rui-drawer-links">
 						<span className="rui-drawer-content--text">Dashboard</span>
-					</a>
+					</div>
 				</li>
 				<li className="rui-drawer-content">
-					<a href="" className="rui-drawer-links">
+					<div className="rui-drawer-links">
 						<span className="rui-drawer-content--text">My Habits</span>
-					</a>
+					</div>
 				</li>
 				<li className="rui-drawer-content">
-					<a href="" className="rui-drawer-links">
+					<div className="rui-drawer-links">
 						<span className="rui-drawer-content--text">SignIn</span>
-					</a>
+					</div>
 				</li>
 			</ul>
 		</nav>
