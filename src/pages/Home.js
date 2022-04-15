@@ -1,2 +1,4 @@
-const Home = () => <h1> This is home page </h1>;
+import { HomeContent } from "../components";
+
+const Home = () => <HomeContent />;
 export { Home };
