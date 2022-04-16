@@ -146,6 +146,47 @@ const NewHabitModal = () => {
 					</div>
 					<div className="basic-card b-radius-2 mb-5">
 						<h4 className="text-bold m-5 py-3">Frequency</h4>
+						<div className="flex-row align-center py-3 m-5 flex-gap-1 flex-wrap">
+							<label>
+								<p>Start Date : </p>
+							</label>
+
+							<input
+								type="date"
+								name="habit-start"
+								aria-label="start date"
+								className="b-radius-2 p-4 date-input-container flex-grow-1"
+								onChange={(e) =>
+									habitsDispatch({
+										type: "NEW_HABIT",
+										payload: {
+											newHabit: {
+												startDate: e.target.value,
+											},
+										},
+									})
+								}
+							/>
+							<label>
+								<p>Start Time : </p>
+							</label>
+							<input
+								type="time"
+								name="habit-time"
+								aria-label="start yime"
+								className="b-radius-2 p-4 date-input-container flex-grow-1"
+								onChange={(e) =>
+									habitsDispatch({
+										type: "NEW_HABIT",
+										payload: {
+											newHabit: {
+												startTime: e.target.value,
+											},
+										},
+									})
+								}
+							/>
+						</div>
 					</div>
 					<section className="card-footer flex-row flex-grow-1 justify-content-center flex-gap-1 py-5 px-0">
 						<button

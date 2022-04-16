@@ -189,12 +189,12 @@ input:checked + .slider::before {
 /* Habits page */
 .category-container {
   height: 100%;
-  width: 25%;
+  width: 20%;
 }
 
 .habits-container {
   height: 100%;
-  width: 75%;
+  width: 80%;
 }
 
 .grid-container .habits-content-container {
@@ -255,4 +255,12 @@ input:checked + .slider::before {
 
 .empty-habit-container {
   width: 30rem;
+}
+
+.date-input-container {
+  border: 0;
+  background: var(--secondary-background-color);
+  color: var(--cta-color);
+  font-family: inherit;
+  font-size: 1.4rem;
 }

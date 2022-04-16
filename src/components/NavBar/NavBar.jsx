@@ -11,7 +11,7 @@ const NavBar = () => {
 			: "no-link cursor-pointer";
 	const handleHideNavbar = () => setShowNavbar(false);
 	return (
-		<div className="nav-container p-0 m-0 w-100 h-auto flex-column">
+		<div className="nav-container p-0 m-0 w-100 h-auto flex-row">
 			<div className="nav-content p-0 m-0">
 				<nav className="nav nav-shadow p-0 m-0">
 					<ul className="rui-drawer-content--list no-list">

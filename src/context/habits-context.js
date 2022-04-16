@@ -16,8 +16,6 @@ const defaultHabitsState = {
 		icon: "",
 		startDate: "",
 		startTime: "",
-		endDate: "",
-		endTime: "",
 	},
 };
 const HabitsContext = createContext({});
