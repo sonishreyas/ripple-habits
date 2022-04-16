@@ -9,7 +9,7 @@ import { Response } from "miragejs";
  * send GET Request at /api/icons
  * */
 
-export const getAllIconsHandler = function () {
+export const getIconsHandler = function () {
 	try {
 		return new Response(200, {}, { icons: this.db.icons });
 	} catch (error) {

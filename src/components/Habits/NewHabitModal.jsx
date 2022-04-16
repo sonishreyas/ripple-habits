@@ -53,6 +53,13 @@ const NewHabitModal = () => {
 							</section>
 						}
 						<h4 className="text-bold m-5 py-3">Choose an icon</h4>
+						{/* <div>
+              {
+                iconsData.length && iconsData.map(({_id,iconName}) => 
+
+                )
+              }
+            </div> */}
 						<h4 className="text-bold m-5 py-3">Choose a color</h4>
 					</div>
 					<section className="card-footer flex-row flex-grow-1 justify-content-center flex-gap-1 py-5 px-0">

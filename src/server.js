@@ -22,8 +22,8 @@ import {
 	deleteLabelHandler,
 	getLabelsHandler,
 } from "./backend/controllers/LabelController";
-import { getAllColorsHandler } from "./backend/controllers/ColorsController";
-import { getAllIconsHandler } from "./backend/controllers/IconsController";
+import { getColorsHandler } from "./backend/controllers/ColorsController";
+import { getIconsHandler } from "./backend/controllers/IconsController";
 import { users } from "./backend/db/users";
 import { quotes } from "./backend/db/quotes";
 import { colors } from "./backend/db/colors";
@@ -46,9 +46,12 @@ export function makeServer({ environment = "development" } = {}) {
 			server.logging = false;
 			quotes.forEach((item) => server.create("quote", { ...item }));
 
-			colors.forEach((item) => server.create("colors", { ...item }));
+			colors.forEach((item) => server.create("color", { ...item }));
 
-			icons.forEach((item) => server.create("icons", { ...item }));
+			icons.forEach((item) => {
+				console.log(icons);
+				server.create("icon", { ...item });
+			});
 
 			users.forEach((item) =>
 				server.create("user", {
@@ -70,10 +73,10 @@ export function makeServer({ environment = "development" } = {}) {
 			this.get("/quotes", getQuotesHandler.bind(this));
 
 			// colors routes (public)
-			this.get("/colors", getAllColorsHandler.bind(this));
+			this.get("/colors", getColorsHandler.bind(this));
 
 			// icons routes (public)
-			this.get("/icons", getAllIconsHandler.bind(this));
+			this.get("/icons", getIconsHandler.bind(this));
 
 			// habit routes (private)
 			this.get("habits", getHabitsHandler.bind(this));

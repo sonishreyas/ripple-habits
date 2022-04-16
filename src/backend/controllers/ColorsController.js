@@ -9,7 +9,7 @@ import { Response } from "miragejs";
  * send GET Request at /api/colors
  * */
 
-export const getAllColorsHandler = function () {
+export const getColorsHandler = function () {
 	try {
 		return new Response(200, {}, { colors: this.db.colors });
 	} catch (error) {
