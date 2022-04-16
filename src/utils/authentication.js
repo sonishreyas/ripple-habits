@@ -4,7 +4,6 @@ import { useAuth } from "../context";
 const RequireAuth = ({ children }) => {
 	const { authState } = useAuth();
 	const location = useLocation();
-	console.log(location);
 	return authState.token ? (
 		children
 	) : (

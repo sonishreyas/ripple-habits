@@ -1,11 +1,12 @@
 import { Routes, Route, Outlet } from "react-router-dom";
 import "./App.css";
 import { Home, Authentication, Habits, Profile, Dashboard } from "./pages";
-import { Header, Footer, NavBar } from "./components";
-import { useNavbar } from "./context";
+import { Header, Footer, NavBar, NewHabitModal } from "./components";
+import { useNavbar, useHabits } from "./context";
 import { RequireAuth } from "./utils";
 function App() {
 	const { showNavbar } = useNavbar();
+	const { showHabitsModal } = useHabits();
 	return (
 		<div className="grid-container">
 			<Header />
@@ -39,6 +40,7 @@ function App() {
 			</Routes>
 			<Outlet />
 			{showNavbar && <NavBar />}
+			{showHabitsModal && <NewHabitModal />}
 			<Footer />
 		</div>
 	);

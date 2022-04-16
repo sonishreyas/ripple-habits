@@ -22,9 +22,12 @@ import {
 	deleteLabelHandler,
 	getLabelsHandler,
 } from "./backend/controllers/LabelController";
+import { getAllColorsHandler } from "./backend/controllers/ColorsController";
+import { getAllIconsHandler } from "./backend/controllers/IconsController";
 import { users } from "./backend/db/users";
 import { quotes } from "./backend/db/quotes";
-
+import { colors } from "./backend/db/colors";
+import { icons } from "./backend/db/icons";
 export function makeServer({ environment = "development" } = {}) {
 	let server = new Server({
 		serializers: {
@@ -34,12 +37,18 @@ export function makeServer({ environment = "development" } = {}) {
 		models: {
 			user: Model,
 			quotes: Model,
+			colors: Model,
+			icons: Model,
 		},
 
 		// Runs on the start of the server
 		seeds(server) {
 			server.logging = false;
 			quotes.forEach((item) => server.create("quote", { ...item }));
+
+			colors.forEach((item) => server.create("colors", { ...item }));
+
+			icons.forEach((item) => server.create("icons", { ...item }));
 
 			users.forEach((item) =>
 				server.create("user", {
@@ -59,6 +68,12 @@ export function makeServer({ environment = "development" } = {}) {
 
 			// quotes routes (public)
 			this.get("/quotes", getQuotesHandler.bind(this));
+
+			// colors routes (public)
+			this.get("/colors", getAllColorsHandler.bind(this));
+
+			// icons routes (public)
+			this.get("/icons", getAllIconsHandler.bind(this));
 
 			// habit routes (private)
 			this.get("habits", getHabitsHandler.bind(this));
