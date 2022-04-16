@@ -65,7 +65,6 @@ export const createHabitHandler = function (schema, request) {
 		);
 	}
 	const { habit } = JSON.parse(request.requestBody);
-	console.log(habit);
 	const createdHabit = {
 		_id: uuid(),
 		labels: [],

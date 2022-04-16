@@ -27,7 +27,7 @@ const habitsReducer = (habitsState, { type, payload }) => {
 				newHabit: { ...habitsState.newHabit, ...payload.newHabit },
 			};
 
-		case "UPDAYE_HABITS_NAME":
+		case "UPDAYE_HABITS":
 			return {
 				...habitsState,
 				habits: [...payload.habits],

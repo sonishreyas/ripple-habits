@@ -45,13 +45,13 @@ const addNewHabitsHandler = (element, habitData, habitsDispatch) => {
  * @param {string} token encodedToken of user
  * @param {function} habitsDispatch Reducer function
  */
-const updateHabitsHandler = (element, habitsId, habitsName, habitsDispatch) => {
+const updateHabitsHandler = (element, habitsId, habitsData, habitsDispatch) => {
 	element.preventDefault();
 	(async () => {
 		try {
 			const response = await axios.put(
 				`/api/habits/${habitsId}`,
-				{ habit: { name: habitsName } },
+				{ habit: habitsData },
 				{
 					headers: {
 						Accept: "*/*",
@@ -59,8 +59,9 @@ const updateHabitsHandler = (element, habitsId, habitsName, habitsDispatch) => {
 					},
 				}
 			);
+			console.log(response);
 			habitsDispatch({
-				type: "UPDAYE_HABITS_NAME",
+				type: "UPDAYE_HABITS",
 				payload: {
 					habits: response.data.habits,
 				},
@@ -89,7 +90,7 @@ const removeHabitsHandler = (element, habitsId, habitsDispatch) => {
 				},
 			});
 			habitsDispatch({
-				type: "REMOVE_HABITS",
+				type: "REMOVE_HABIT",
 				payload: {
 					habits: response.data.habits,
 				},

@@ -79,7 +79,7 @@ export function makeServer({ environment = "development" } = {}) {
 			this.get("/habits", getHabitsHandler.bind(this));
 			this.get("/habits/:habitId", getHabitHandler.bind(this));
 			this.post("/habits", createHabitHandler.bind(this));
-			this.post("/habits/:habitId", editHabitHandler.bind(this));
+			this.put("/habits/:habitId", editHabitHandler.bind(this));
 			this.delete("/habits/:habitId", deleteHabitHandler.bind(this));
 
 			// label routes (private)

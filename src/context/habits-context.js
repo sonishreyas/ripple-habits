@@ -30,7 +30,6 @@ const HabitsProvider = ({ children }) => {
 	);
 	const [showHabitsModal, setShowHabitsModal] = useState(false);
 	useEffect(() => getHabitsDataHandler(habitsDispatch), []);
-	console.log(habitsState);
 	return (
 		<HabitsContext.Provider
 			value={{

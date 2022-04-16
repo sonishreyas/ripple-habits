@@ -247,3 +247,12 @@ input:checked + .slider::before {
 .habit-form-container .textbox-label {
   background-color: var(--primary-color);
 }
+
+.empty-title-container {
+  background-color: var(--primary-color);
+  width: 20rem;
+}
+
+.empty-habit-container {
+  width: 30rem;
+}

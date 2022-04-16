@@ -1,6 +1,6 @@
 import { useHabits } from "../../context";
 import { useState } from "react";
-import { addNewHabitsHandler } from "../../utils";
+import { addNewHabitsHandler, updateHabitsHandler } from "../../utils";
 
 const NewHabitModal = () => {
 	const {
@@ -27,7 +27,15 @@ const NewHabitModal = () => {
 		});
 	};
 	const handleSaveHabit = (e) => {
-		addNewHabitsHandler(e, habitsState.newHabit, habitsDispatch);
+		habitsState?.newHabit?._id?.length
+			? updateHabitsHandler(
+					e,
+					habitsState.newHabit._id,
+					habitsState.newHabit,
+					habitsDispatch
+			  )
+			: addNewHabitsHandler(e, habitsState.newHabit, habitsDispatch);
+
 		setShowHabitsModal(false);
 		habitsDispatch({
 			type: "RESET_FORM",
@@ -67,7 +75,7 @@ const NewHabitModal = () => {
 						<h4 className="text-bold m-5 py-3">Choose an icon</h4>
 						<div className="flex-row justify-content-start align-center flex-wrap flex-gap-2 m-5">
 							{iconsData.length &&
-								iconsData.map(({ _id, iconName }) => (
+								iconsData.map(({ _id, iconName, iconTitle }) => (
 									<label
 										className={`circle-container flex-row justify-content-center align-center ${
 											habitsState.newHabit.icon === iconName
@@ -75,6 +83,7 @@ const NewHabitModal = () => {
 												: ""
 										}`}
 										key={_id}
+										title={iconTitle}
 									>
 										<input
 											className="filters"
@@ -109,6 +118,7 @@ const NewHabitModal = () => {
 												? " color-selected"
 												: ""
 										}`}
+										key={_id}
 										style={{ background: colorCode }}
 									>
 										<input

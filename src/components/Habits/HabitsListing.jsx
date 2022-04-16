@@ -9,7 +9,7 @@ const HabitsListing = () => {
 			<div className="flex-row justify-content-space-between align-center m-5">
 				<h2 className="text-bold">Habits</h2>
 				<button
-					className="cursor-pointer primary-btn p-2 b-radius-3 icon-text-btn flex-row justify-content-center align-center flex-gap-1"
+					className="cursor-pointer primary-btn p-4 b-radius-2 icon-text-btn flex-row justify-content-center align-center flex-gap-1"
 					onClick={handleShowHabitModal}
 				>
 					<span>
