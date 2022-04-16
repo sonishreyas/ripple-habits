@@ -21,3 +21,9 @@ export {
 	getCountValue,
 	trimData,
 } from "./helpers";
+export {
+	addNewHabitsHandler,
+	updateHabitsHandler,
+	getHabitsDataHandler,
+	removeHabitsHandler,
+} from "./habits-management";

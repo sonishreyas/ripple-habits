@@ -1,5 +1,4 @@
 import axios from "axios";
-import { formatDateTime } from "./date";
 /**
  * Add video data to habits
  * @param {*} element
@@ -7,13 +6,13 @@ import { formatDateTime } from "./date";
  * @param {string} token encodedToken of user
  * @param {function} habitsDispatch Reducer function
  */
-const addNewHabitsHandler = (element, habitsName, habitsDispatch) => {
+const addNewHabitsHandler = (element, habitData, habitsDispatch) => {
 	element.preventDefault();
 	(async () => {
 		try {
 			const response = await axios.post(
-				`/api/user/habits`,
-				{ habits: { name: habitsName } },
+				`/api/habits`,
+				{ habit: habitData },
 				{
 					headers: {
 						Accept: "*/*",
@@ -51,8 +50,8 @@ const updateHabitsHandler = (element, habitsId, habitsName, habitsDispatch) => {
 	(async () => {
 		try {
 			const response = await axios.put(
-				`/api/user/habits/${habitsId}`,
-				{ habits: { name: habitsName } },
+				`/api/habits/${habitsId}`,
+				{ habit: { name: habitsName } },
 				{
 					headers: {
 						Accept: "*/*",
@@ -83,7 +82,7 @@ const removeHabitsHandler = (element, habitsId, habitsDispatch) => {
 	element.preventDefault();
 	(async () => {
 		try {
-			const response = await axios.delete(`/api/user/habits/${habitsId}`, {
+			const response = await axios.delete(`/api/habits/${habitsId}`, {
 				headers: {
 					Accept: "*/*",
 					authorization: JSON.parse(localStorage.getItem("user"))?.token,
@@ -110,7 +109,7 @@ const removeHabitsHandler = (element, habitsId, habitsDispatch) => {
 const getHabitsDataHandler = (habitsDispatch) => {
 	(async () => {
 		try {
-			const response = await axios.get(`/api/user/habits`, {
+			const response = await axios.get(`/api/habits`, {
 				headers: {
 					Accept: "*/*",
 					authorization: JSON.parse(localStorage.getItem("user"))?.token,

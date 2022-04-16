@@ -1,6 +1,13 @@
-import { createContext, useContext, useState, useReducer } from "react";
+import {
+	createContext,
+	useContext,
+	useState,
+	useReducer,
+	useEffect,
+} from "react";
 import { useGetColorsData, useGetIconsData } from "../custom-hooks";
 import { habitsReducer } from "../reducers";
+import { getHabitsDataHandler } from "../utils";
 const defaultHabitsState = {
 	habits: [],
 	newHabit: {
@@ -22,7 +29,8 @@ const HabitsProvider = ({ children }) => {
 		defaultHabitsState
 	);
 	const [showHabitsModal, setShowHabitsModal] = useState(false);
-	// useEffect(() => getHabitsDataHandler(HabitsDispatch), []);
+	useEffect(() => getHabitsDataHandler(habitsDispatch), []);
+	console.log(habitsState);
 	return (
 		<HabitsContext.Provider
 			value={{

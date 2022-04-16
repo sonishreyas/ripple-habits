@@ -10,11 +10,11 @@ export const icons = [
 	},
 	{
 		_id: uuid(),
-		iconName: "fa-solid fa-book-blank",
+		iconName: "fa-solid fa-book",
 	},
 	{
 		_id: uuid(),
-		iconName: "fa-solid fa-basketball",
+		iconName: "fa-regular fa-face-smile-beam",
 	},
 	{
 		_id: uuid(),
@@ -34,7 +34,7 @@ export const icons = [
 	},
 	{
 		_id: uuid(),
-		iconName: "fa-solid fa-face-sleeping",
+		iconName: "fa-solid fa-bed",
 	},
 	{
 		_id: uuid(),

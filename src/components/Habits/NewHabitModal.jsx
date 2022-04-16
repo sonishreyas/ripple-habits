@@ -1,5 +1,6 @@
 import { useHabits } from "../../context";
 import { useState } from "react";
+import { addNewHabitsHandler } from "../../utils";
 
 const NewHabitModal = () => {
 	const {
@@ -19,10 +20,21 @@ const NewHabitModal = () => {
 				},
 			},
 		});
-	console.log(colorsData, iconsData);
-	const handleHabitModalDismiss = () => setShowHabitsModal(false);
+	const handleHabitModalDismiss = () => {
+		setShowHabitsModal(false);
+		habitsDispatch({
+			type: "RESET_FORM",
+		});
+	};
+	const handleSaveHabit = (e) => {
+		addNewHabitsHandler(e, habitsState.newHabit, habitsDispatch);
+		setShowHabitsModal(false);
+		habitsDispatch({
+			type: "RESET_FORM",
+		});
+	};
 	return (
-		<div className="modal">
+		<div className="modal  flex-row justify-content-center align-center">
 			<div className="modal-background"></div>
 			<div className="modal-content p-5 m-5 b-radius-2 habit-form-container card-shadow">
 				<h3 className="p-2 my-2 mx-0 text-cta-color text-bold">
@@ -53,19 +65,83 @@ const NewHabitModal = () => {
 							</section>
 						}
 						<h4 className="text-bold m-5 py-3">Choose an icon</h4>
-						{/* <div>
-              {
-                iconsData.length && iconsData.map(({_id,iconName}) => 
-
-                )
-              }
-            </div> */}
+						<div className="flex-row justify-content-start align-center flex-wrap flex-gap-2 m-5">
+							{iconsData.length &&
+								iconsData.map(({ _id, iconName }) => (
+									<label
+										className={`circle-container flex-row justify-content-center align-center ${
+											habitsState.newHabit.icon === iconName
+												? "icon-selected"
+												: ""
+										}`}
+										key={_id}
+									>
+										<input
+											className="filters"
+											type="radio"
+											name="icon"
+											value={iconName}
+											checked={
+												habitsState.newHabit.icon === iconName ? true : false
+											}
+											onChange={() =>
+												habitsDispatch({
+													type: "NEW_HABIT",
+													payload: {
+														newHabit: {
+															icon: iconName,
+														},
+													},
+												})
+											}
+										/>
+										<i className={`${iconName} icons`}></i>
+									</label>
+								))}
+						</div>
 						<h4 className="text-bold m-5 py-3">Choose a color</h4>
+						<div className="flex-row justify-content-start align-center flex-wrap flex-gap-1 m-5">
+							{colorsData.length &&
+								colorsData.map(({ _id, colorCode }) => (
+									<label
+										className={`circle-container flex-row justify-content-center align-center ${
+											habitsState.newHabit.color === colorCode
+												? " color-selected"
+												: ""
+										}`}
+										style={{ background: colorCode }}
+									>
+										<input
+											className="filters"
+											type="radio"
+											name="color"
+											value={colorCode}
+											checked={
+												habitsState.newHabit.color === colorCode ? true : false
+											}
+											onChange={() =>
+												habitsDispatch({
+													type: "NEW_HABIT",
+													payload: {
+														newHabit: {
+															color: colorCode,
+														},
+													},
+												})
+											}
+										/>
+									</label>
+								))}
+						</div>
+					</div>
+					<div className="basic-card b-radius-2 mb-5">
+						<h4 className="text-bold m-5 py-3">Frequency</h4>
 					</div>
 					<section className="card-footer flex-row flex-grow-1 justify-content-center flex-gap-1 py-5 px-0">
 						<button
 							className="cursor-pointer primary-btn save-btn p-5 b-radius-2 my-0 text-bold flex-grow-1"
 							type="button"
+							onClick={handleSaveHabit}
 						>
 							Save
 						</button>

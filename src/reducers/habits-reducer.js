@@ -32,11 +32,25 @@ const habitsReducer = (habitsState, { type, payload }) => {
 				...habitsState,
 				habits: [...payload.habits],
 			};
+		case "RESET_FORM":
+			return {
+				...habitsState,
+				newHabit: {
+					title: "",
+					color: "",
+					icon: "",
+					startDate: "",
+					startTime: "",
+					endDate: "",
+					endTime: "",
+				},
+			};
+
 		case "RESET":
 			return {
 				...habitsState,
 				habits: [],
-				title: "",
+				newHabit: {},
 			};
 		default:
 			return habitsState;
