@@ -4,7 +4,14 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
-import { NavbarProvider, ThemeProvider } from "./context";
+import {
+	NavbarProvider,
+	ThemeProvider,
+	RegisterProvider,
+	LoginProvider,
+	AuthProvider,
+	ProfileProvider,
+} from "./context";
 // Call make Server
 makeServer();
 ReactDOM.render(
@@ -12,7 +19,15 @@ ReactDOM.render(
 		<Router>
 			<ThemeProvider>
 				<NavbarProvider>
-					<App />
+					<RegisterProvider>
+						<LoginProvider>
+							<AuthProvider>
+								<ProfileProvider>
+									<App />
+								</ProfileProvider>
+							</AuthProvider>
+						</LoginProvider>
+					</RegisterProvider>
 				</NavbarProvider>
 			</ThemeProvider>
 		</Router>

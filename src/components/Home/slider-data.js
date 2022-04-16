@@ -6,27 +6,27 @@ export const sliderData = [
 		title: "Health",
 		subTitle: "Build a healthy habit",
 		gifURL:
-			"https://raw.githubusercontent.com/sonishreyas/ripple-habits/feat/home-page/src/media/run.gif",
+			"https://raw.githubusercontent.com/sonishreyas/ripple-habits/dev/src/media/run.gif",
 	},
 	{
 		id: uuid(),
 		title: "Health",
 		subTitle: "Build a healthy habit",
 		gifURL:
-			"https://raw.githubusercontent.com/sonishreyas/ripple-habits/feat/home-page/src/media/healthy-food.gif",
+			"https://raw.githubusercontent.com/sonishreyas/ripple-habits/dev/src/media/healthy-food.gif",
 	},
 	{
 		id: uuid(),
 		title: "Health",
 		subTitle: "Build a healthy habit",
 		gifURL:
-			"https://raw.githubusercontent.com/sonishreyas/ripple-habits/feat/home-page/src/media/meditate.gif",
+			"https://raw.githubusercontent.com/sonishreyas/ripple-habits/dev/src/media/meditate.gif",
 	},
 	{
 		id: uuid(),
 		title: "Health",
 		subTitle: "Build a healthy habit",
 		gifURL:
-			"https://raw.githubusercontent.com/sonishreyas/ripple-habits/feat/home-page/src/media/salad.gif",
+			"https://raw.githubusercontent.com/sonishreyas/ripple-habits/dev/src/media/salad.gif",
 	},
 ];
