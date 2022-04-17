@@ -1,6 +1,6 @@
 import { useCategory } from "../../context";
 const Category = () => {
-	const { showCategoryContainer, setShowCategoryContainer } = useCategory();
+	const { setShowCategoryContainer } = useCategory();
 
 	const handleDismissCategoryContainer = () => setShowCategoryContainer(false);
 	return (
