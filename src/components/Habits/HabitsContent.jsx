@@ -4,7 +4,13 @@ import { useEffect } from "react";
 const HabitsContent = () => {
 	const { showCategoryContainer, setShowCategoryContainer } = useCategory();
 	const handleShowCategoryContainer = () => setShowCategoryContainer(true);
-	useEffect(() => setShowCategoryContainer(false), []);
+	useEffect(
+		() =>
+			window.innerWidth <= 768
+				? setShowCategoryContainer(false)
+				: setShowCategoryContainer(true),
+		[]
+	);
 	return (
 		<main className="main flex-row flex-gap-1 habits-content-container">
 			{showCategoryContainer && (
