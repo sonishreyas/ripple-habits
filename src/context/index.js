@@ -5,3 +5,4 @@ export { RegisterProvider, useRegister } from "./register-context";
 export { AuthProvider, useAuth } from "./auth-context";
 export { ProfileProvider, useProfile } from "./profile-context";
 export { useHabits, HabitsProvider } from "./habits-context";
+export { CategoryProvider, useCategory } from "./category-context";

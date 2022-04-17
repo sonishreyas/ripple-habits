@@ -12,6 +12,7 @@ import {
 	AuthProvider,
 	ProfileProvider,
 	HabitsProvider,
+	CategoryProvider,
 } from "./context";
 // Call make Server
 makeServer();
@@ -24,9 +25,11 @@ ReactDOM.render(
 						<LoginProvider>
 							<AuthProvider>
 								<HabitsProvider>
-									<ProfileProvider>
-										<App />
-									</ProfileProvider>
+									<CategoryProvider>
+										<ProfileProvider>
+											<App />
+										</ProfileProvider>
+									</CategoryProvider>
 								</HabitsProvider>
 							</AuthProvider>
 						</LoginProvider>

@@ -145,47 +145,7 @@ input:checked + .slider::before {
   grid-column: 1/13;
   grid-row: 1/13;
 }
-@media screen and (max-width: 1180px) {
-  .header-nav-icon {
-      display: none;
-  }
-}
-.header-theme-small-icon {
-  display: none;
-}
-@media screen and (max-width: 768px) {
-  .header-nav-icon{
-    display: block;
-  }
-  .header-nav-icons {
-    display: none;
-  }
-  .grid-container .nav {
-		height: 100%;
-    width: 22rem;
-		grid-column: 1/6;
-		grid-row: 1/13;
-		overflow: hidden;
-		background: var(--primary-color);
-		z-index: var(--max-z-index);
-		visibility: visible;
-    
-	}
-}
-@media screen and (max-width: 400px) {
-  .header-them-icons {
-    display: none;
-  }
-  .header-theme-small-icon {
-    display: block;
-  }
-}
 
-@media screen and (max-width: 480px) {
-  .grid-container .header {
-    overflow: visible;
-  }
-}
 /* Habits page */
 .category-container {
   height: 100%;
@@ -263,4 +223,91 @@ input:checked + .slider::before {
   color: var(--cta-color);
   font-family: inherit;
   font-size: 1.4rem;
+}
+.area-btn-container {
+  display: none;
+}
+
+.area-dismiss-container {
+  display: none;
+}
+@media screen and (max-width: 1180px) {
+  .header-nav-icon {
+      display: none;
+  }
+}
+.header-theme-small-icon {
+  display: none;
+}
+
+@media screen and (max-width: 870px) {
+  .basic-card {
+      margin: var(--m-2);
+  }
+}
+@media screen and (max-width: 768px) {
+  .header-nav-icon{
+    display: block;
+  }
+  .header-nav-icons {
+    display: none;
+  }
+  .grid-container .nav {
+		height: 100%;
+    width: 22rem;
+		grid-column: 1/6;
+		grid-row: 1/13;
+		overflow: hidden;
+		background: var(--primary-color);
+		z-index: var(--max-z-index);
+		visibility: visible;
+	}
+  .category-container {
+    grid-column: 1/13;
+    grid-row: 1/13;
+    width: 100%;
+    height: 120%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    background: var(--secondary-background-color);
+    z-index: var(--max-z-index);
+  }
+  .area-btn-container {
+    display: block;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background: var(--secondary-background-color);
+    z-index: var(--max-z-index);
+  }
+
+  .area-dismiss-container {
+    display: block;
+  }
+  .habits-container {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .header-them-icons {
+    display: none;
+  }
+  .header-theme-small-icon {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .grid-container .header {
+    overflow: visible;
+  }
+}
+
+@media screen and (max-width: 650px)  {
+  .input-form .input-container {
+    margin: var(--m-5);
+  }
 }

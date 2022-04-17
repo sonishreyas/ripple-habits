@@ -42,7 +42,7 @@ const NewHabitModal = () => {
 		});
 	};
 	return (
-		<div className="modal  flex-row justify-content-center align-center">
+		<div className="modal flex-row justify-content-center align-center">
 			<div className="modal-background"></div>
 			<div className="modal-content p-5 m-5 b-radius-2 habit-form-container card-shadow">
 				<h3 className="p-2 my-2 mx-0 text-cta-color text-bold">
@@ -143,6 +143,7 @@ const NewHabitModal = () => {
 									</label>
 								))}
 						</div>
+						<h4 className="text-bold m-5 py-3">Choose a label</h4>
 					</div>
 					<div className="basic-card b-radius-2 mb-5">
 						<h4 className="text-bold m-5 py-3">Frequency</h4>
