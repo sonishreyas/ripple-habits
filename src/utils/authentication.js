@@ -1,11 +1,8 @@
 import axios from "axios";
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../context";
 const RequireAuth = ({ children }) => {
-	const { authState } = useAuth();
 	const location = useLocation();
-	console.log(location);
-	return authState.token ? (
+	return JSON.parse(localStorage.getItem("user"))?.token ? (
 		children
 	) : (
 		<Navigate to="/auth" state={{ from: location }} replace />

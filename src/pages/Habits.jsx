@@ -1,2 +1,4 @@
-const Habits = () => <h1> Habits here</h1>;
+import { HabitsContent } from "../components";
+
+const Habits = () => <HabitsContent />;
 export { Habits };
