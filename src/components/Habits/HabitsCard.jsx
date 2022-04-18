@@ -35,7 +35,6 @@ const HabitsCard = ({ data, archive }) => {
 	const handleUnarchiveData = (e, _id) => {
 		removeFromArchiveHandler(e, _id, archiveDispatch);
 	};
-	console.log(archive);
 	return (
 		<div className="flex-column justify-content-center align-center w-100">
 			{data.length ? (

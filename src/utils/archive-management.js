@@ -77,7 +77,6 @@ const getArchiveDataHandler = (archiveDispatch) => {
 					authorization: JSON.parse(localStorage.getItem("user"))?.token,
 				},
 			});
-			console.log(response);
 			archiveDispatch({
 				type: "GET_ITEM",
 				payload: {

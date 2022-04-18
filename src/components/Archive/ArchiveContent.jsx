@@ -16,7 +16,6 @@ const ArchiveContent = () => {
 				: []
 		);
 	}, [habitsState, archiveState]);
-	console.log(archiveState, archivedHabits);
 	return (
 		<div className="habits-container p-5">
 			<HabitsListing

@@ -33,15 +33,14 @@ const Banner = () => {
 		<>
 			<article className="background-image-container ">
 				{sliderData.map(({ id, gifURL }, index) => (
-					<>
-						<img
-							src={gifURL}
-							className={`banner ${
-								slideIndex === index + 1 ? "slide-active" : "slide-inactive"
-							}`}
-							alt="banner"
-						/>
-					</>
+					<img
+						src={gifURL}
+						className={`banner ${
+							slideIndex === index + 1 ? "slide-active" : "slide-inactive"
+						}`}
+						alt="banner"
+						key={id}
+					/>
 				))}
 			</article>
 			<div className="flex-row justify-content-center align-center flex-gap-half banner-dots-container">
