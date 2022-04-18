@@ -27,3 +27,8 @@ export {
 	getHabitsDataHandler,
 	removeHabitsHandler,
 } from "./habits-management";
+export {
+	addToArchiveHandler,
+	removeFromArchiveHandler,
+	getArchiveDataHandler,
+} from "./archive-management";

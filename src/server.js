@@ -83,18 +83,18 @@ export function makeServer({ environment = "development" } = {}) {
 			this.delete("/habits/:habitId", deleteHabitHandler.bind(this));
 
 			// label routes (private)
-			this.get("labels", getLabelsHandler.bind(this));
-			this.post("labels/:labelName", createLabelHandler.bind(this));
-			this.delete("labels/:labelName", deleteLabelHandler.bind(this));
+			this.get("/labels", getLabelsHandler.bind(this));
+			this.post("/labels/:labelName", createLabelHandler.bind(this));
+			this.delete("/labels/:labelName", deleteLabelHandler.bind(this));
 
 			// archive routes (private)
-			this.get("archives", getAllArchivedHabitsHandler.bind(this));
+			this.get("/archives", getAllArchivedHabitsHandler.bind(this));
 			this.post(
-				"archives/restore/:habitId",
+				"/archives/restore/:habitId",
 				restoreFromArchivesHandler.bind(this)
 			);
-			this.post("archives/:habitId", archiveHabitHandler.bind(this));
-			this.delete("archives/:habitId", deleteFromArchivesHandler.bind(this));
+			this.post("/archives/add/:habitId", archiveHabitHandler.bind(this));
+			this.delete("/archives/:habitId", deleteFromArchivesHandler.bind(this));
 		},
 	});
 	return server;

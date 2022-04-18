@@ -1,9 +1,15 @@
-import { useHabits } from "../../context";
-import { removeHabitsHandler } from "../../utils";
+import { useArchive, useHabits } from "../../context";
+import {
+	addToArchiveHandler,
+	removeHabitsHandler,
+	removeFromArchiveHandler,
+} from "../../utils";
 import { EmptyHabits } from "./EmptyHabits";
+// import { useState, useEffect } from "react";
+const HabitsCard = ({ data, archive }) => {
+	const { setShowHabitsModal, habitsDispatch } = useHabits();
+	const { archiveDispatch } = useArchive();
 
-const HabitsCard = () => {
-	const { habitsState, setShowHabitsModal, habitsDispatch } = useHabits();
 	const handleEditHabit = (e, _id, title, color, icon) => {
 		habitsDispatch({
 			type: "NEW_HABIT",
@@ -18,14 +24,22 @@ const HabitsCard = () => {
 		});
 		setShowHabitsModal(true);
 	};
-
 	const handleDeleteHabit = (e, _id) => {
 		removeHabitsHandler(e, _id, habitsDispatch);
 	};
+
+	const handleArchiveData = (e, _id) => {
+		addToArchiveHandler(e, _id, archiveDispatch);
+	};
+
+	const handleUnarchiveData = (e, _id) => {
+		removeFromArchiveHandler(e, _id, archiveDispatch);
+	};
+	console.log(archive);
 	return (
 		<div className="flex-column justify-content-center align-center w-100">
-			{habitsState.habits.length ? (
-				habitsState.habits.map(({ _id, title, color, icon }) => (
+			{data.length ? (
+				data.map(({ _id, title, color, icon }) => (
 					<div
 						className="basic-card w-100 flex-row align-center justify-content-space-between m-5 p-10 flex-gap-1 b-radius-2 card-shadow"
 						key={_id}
@@ -46,10 +60,19 @@ const HabitsCard = () => {
 								title="Edit Habit"
 								onClick={(e) => handleEditHabit(e, _id, title, color, icon)}
 							></i>
-							<i
-								className="fa-solid fa-box-archive p-5 cursor-pointer social icons"
-								title="Archive Habit"
-							></i>
+							{archive ? (
+								<i
+									className="fa-solid fa-box-open p-5 cursor-pointer social icons"
+									title="Unarchive Habit"
+									onClick={(e) => handleUnarchiveData(e, _id)}
+								></i>
+							) : (
+								<i
+									className="fa-solid fa-box-archive p-5 cursor-pointer social icons"
+									title="Archive Habit"
+									onClick={(e) => handleArchiveData(e, _id)}
+								></i>
+							)}
 							<i
 								className="fa-solid fa-trash p-5 cursor-pointer social icons"
 								title="Delete Habit"

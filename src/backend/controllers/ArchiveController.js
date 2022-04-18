@@ -12,17 +12,17 @@ import { requiresAuth } from "../utils/authUtils";
  * */
 
 export const getAllArchivedHabitsHandler = function (schema, request) {
-  const user = requiresAuth.call(this, request);
-  if (!user) {
-    return new Response(
-      404,
-      {},
-      {
-        errors: ["The email you entered is not Registered. Not Found error"],
-      }
-    );
-  }
-  return new Response(200, {}, { archives: user.archives });
+	const user = requiresAuth.call(this, request);
+	if (!user) {
+		return new Response(
+			404,
+			{},
+			{
+				errors: ["The email you entered is not Registered. Not Found error"],
+			}
+		);
+	}
+	return new Response(200, {}, { archives: user.archives });
 };
 
 /**
@@ -31,20 +31,20 @@ export const getAllArchivedHabitsHandler = function (schema, request) {
  * */
 
 export const deleteFromArchivesHandler = function (schema, request) {
-  const user = requiresAuth.call(this, request);
-  if (!user) {
-    return new Response(
-      404,
-      {},
-      {
-        errors: ["The email you entered is not Registered. Not Found error"],
-      }
-    );
-  }
-  const { habitId } = request.params;
-  user.archives = user.archives.filter((habit) => habit._id !== habitId);
-  this.db.users.update({ _id: user._id }, user);
-  return new Response(200, {}, { archives: user.archives });
+	const user = requiresAuth.call(this, request);
+	if (!user) {
+		return new Response(
+			404,
+			{},
+			{
+				errors: ["The email you entered is not Registered. Not Found error"],
+			}
+		);
+	}
+	const { habitId } = request.params;
+	user.archives = user.archives.filter((habit) => habit._id !== habitId);
+	this.db.users.update({ _id: user._id }, user);
+	return new Response(200, {}, { archives: user.archives });
 };
 
 /**
@@ -53,28 +53,24 @@ export const deleteFromArchivesHandler = function (schema, request) {
  * */
 
 export const restoreFromArchivesHandler = function (schema, request) {
-  const user = requiresAuth.call(this, request);
-  if (!user) {
-    return new Response(
-      404,
-      {},
-      {
-        errors: ["The email you entered is not Registered. Not Found error"],
-      }
-    );
-  }
-  const { habitId } = request.params;
-  const restoredHabit = user.archives.filter(
-    (habit) => habit._id === habitId
-  )[0];
-  user.archives = user.archives.filter((habit) => habit._id !== habitId);
-  user.habits.push(restoredHabit);
-  this.db.users.update({ _id: user._id }, user);
-  return new Response(
-    200,
-    {},
-    { archives: user.archives, habits: user.habits }
-  );
+	const user = requiresAuth.call(this, request);
+	if (!user) {
+		return new Response(
+			404,
+			{},
+			{
+				errors: ["The email you entered is not Registered. Not Found error"],
+			}
+		);
+	}
+	const { habitId } = request.params;
+	user.archives = user.archives.filter((habit) => habit._id !== habitId);
+	this.db.users.update({ _id: user._id }, user);
+	return new Response(
+		200,
+		{},
+		{ archives: user.archives, habits: user.habits }
+	);
 };
 
 /**
@@ -83,36 +79,38 @@ export const restoreFromArchivesHandler = function (schema, request) {
  * */
 
 export const archiveHabitHandler = function (schema, request) {
-  const user = requiresAuth.call(this, request);
-  try {
-    if (!user) {
-      return new Response(
-        404,
-        {},
-        {
-          errors: ["The email you entered is not Registered. Not Found error"],
-        }
-      );
-    }
-    const { habitId } = request.params;
-    const archivedHabit = user.habits.filter(
-      (habit) => habit._id === habitId
-    )[0];
-    user.habits = user.habits.filter((habit) => habit._id !== habitId);
-    user.archives.push({ ...archivedHabit });
-    this.db.users.update({ _id: user._id }, user);
-    return new Response(
-      201,
-      {},
-      { archives: user.archives, habits: user.habits }
-    );
-  } catch (error) {
-    return new Response(
-      500,
-      {},
-      {
-        error,
-      }
-    );
-  }
+	const user = requiresAuth.call(this, request);
+	console.log(user);
+	try {
+		if (!user) {
+			return new Response(
+				404,
+				{},
+				{
+					errors: ["The email you entered is not Registered. Not Found error"],
+				}
+			);
+		}
+		const { habitId } = request.params;
+		console.log(habitId);
+		const archivedHabit = user.habits.filter(
+			(habit) => habit._id === habitId
+		)[0];
+		user.habits = user.habits.filter((habit) => habit._id !== habitId);
+		user.archives.push({ _id: archivedHabit._id });
+		this.db.users.update({ _id: user._id }, user);
+		return new Response(
+			201,
+			{},
+			{ archives: user.archives, habits: user.habits }
+		);
+	} catch (error) {
+		return new Response(
+			500,
+			{},
+			{
+				error,
+			}
+		);
+	}
 };
