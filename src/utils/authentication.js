@@ -65,9 +65,9 @@ const registerHandler = (
 			// saving the encodedToken in the localStorage
 			const user = {
 				token: response.data.encodedToken,
-				firstName: response.data.foundUser.firstName,
-				lastName: response.data.foundUser.lastName,
-				email: response.data.foundUser.email,
+				firstName: response.data.createdUser.firstName,
+				lastName: response.data.createdUser.lastName,
+				email: response.data.createdUser.email,
 			};
 			authDispatch({
 				type: "UPDATE_USER",
