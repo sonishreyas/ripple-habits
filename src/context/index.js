@@ -6,3 +6,4 @@ export { AuthProvider, useAuth } from "./auth-context";
 export { ProfileProvider, useProfile } from "./profile-context";
 export { useHabits, HabitsProvider } from "./habits-context";
 export { CategoryProvider, useCategory } from "./category-context";
+export { ArchiveProvider, useArchive } from "./archive-context";

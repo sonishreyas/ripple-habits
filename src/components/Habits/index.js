@@ -4,3 +4,5 @@ export { Category } from "./Category";
 export { NewHabitModal } from "./NewHabitModal";
 export { HabitsCard } from "./HabitsCard";
 export { EmptyHabits } from "./EmptyHabits";
+export { ArchiveContent } from "../Archive";
+export { AllHabits } from "./AllHabits";

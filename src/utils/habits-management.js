@@ -59,9 +59,8 @@ const updateHabitsHandler = (element, habitsId, habitsData, habitsDispatch) => {
 					},
 				}
 			);
-			console.log(response);
 			habitsDispatch({
-				type: "UPDAYE_HABITS",
+				type: "UPDATE_HABITS",
 				payload: {
 					habits: response.data.habits,
 				},

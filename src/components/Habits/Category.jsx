@@ -1,7 +1,11 @@
+import { NavLink } from "react-router-dom";
 import { useCategory } from "../../context";
 const Category = () => {
 	const { setShowCategoryContainer } = useCategory();
-
+	const getActiveClass = ({ isActive }) =>
+		isActive
+			? "no-link cursor-pointer rui-drawer-content--text h4 text-bold link-active"
+			: "no-link cursor-pointer rui-drawer-content--text h4 text-bold";
 	const handleDismissCategoryContainer = () => setShowCategoryContainer(false);
 	return (
 		<>
@@ -13,40 +17,19 @@ const Category = () => {
 			</section>
 			<ul className="rui-drawer-content--list no-list p-5">
 				<li className="rui-drawer-content">
-					<label
-						className={`flex-row align-center flex-wrap flex-gap-1 cursor-pointer rui-drawer-content--text h3 link-active`}
-					>
-						<input
-							className="filters rui-drawer-content--text"
-							type="checkbox"
-							value="All"
-							// checked={productsState.categoryFilters[name] ? true : false
-							// onChange={(e) => categoryFilterHandler(e, name, btnType)}
-						/>
-
-						<span className="rui-drawer-content--text h4 text-bold">
-							All Habits
-						</span>
-					</label>
+					<NavLink to={"/habits/all"} className={getActiveClass}>
+						All Habits
+					</NavLink>
 				</li>
 				<li className="rui-drawer-content">
-					<label
-						className={`flex-row align-center flex-wrap flex-gap-1 cursor-pointer rui-drawer-content--text h3`}
-					>
-						<input
-							className="filters rui-drawer-content--text"
-							type="checkbox"
-							value="All"
-							// checked={productsState.categoryFilters[name] ? true : false
-							// onChange={(e) => categoryFilterHandler(e, name, btnType)}
-						/>
-						<span className="rui-drawer-content--text h4">Archive</span>
-					</label>
+					<NavLink to={"/habits/archive"} className={getActiveClass}>
+						Archive
+					</NavLink>
 				</li>
 				<li className="rui-drawer-content">
 					<section className="flex-row justify-content-space-between align-center flex-wrap">
 						<span className="rui-drawer-content--text list-heading text-cta-color h4">
-							CATEGORIES
+							AREAS
 						</span>
 					</section>
 				</li>

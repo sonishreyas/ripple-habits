@@ -22,7 +22,7 @@ function App() {
 					}
 				/>
 				<Route
-					path="/habits"
+					path="/habits/*"
 					element={
 						<RequireAuth>
 							<Habits />
