@@ -120,7 +120,9 @@ const updateHabitsDate = (data, updatedData) =>
 						...prev,
 						{
 							...curr,
-							completedAt: [...curr.completedAt, ...updatedData.completedAt],
+							completedAt: [
+								...new Set([...curr.completedAt, ...updatedData.completedAt]),
+							],
 						},
 				  ]
 				: [...prev, ...curr],
@@ -134,6 +136,49 @@ const findDateInArray = (data, date, _id) => {
 		? true
 		: false;
 };
+
+const getStreaks = (habitData) => {
+	let streak = [];
+	let maxStreak = 0;
+	let start = 0;
+	let end = 0;
+	let numOfDays = 0;
+	for (let i = 0; i < habitData.length; i++) {
+		if (start === 0) {
+			start = habitData[i];
+		}
+		if (
+			new Date(habitData[i + 1]).getDate() -
+				new Date(habitData[i]).getDate() ===
+				1 &&
+			i < habitData.length - 1
+		) {
+			numOfDays++;
+		} else if (i === habitData.length - 1 && start === 0) {
+			numOfDays++;
+			end = habitData[i];
+			start = habitData[i];
+			streak.push({ start: start, end: end, streak: numOfDays });
+			start = 0;
+			end = 0;
+			if (maxStreak < numOfDays) {
+				maxStreak = numOfDays;
+			}
+		} else {
+			numOfDays++;
+			end = habitData[i];
+			streak.push({ start: start, end: end, streak: numOfDays });
+			start = 0;
+			end = 0;
+			if (maxStreak < numOfDays) {
+				maxStreak = numOfDays;
+			}
+			numOfDays = 0;
+		}
+	}
+	return { streak, maxStreak };
+};
+
 export {
 	removeFromArray,
 	presentInWatchLater,
@@ -151,4 +196,5 @@ export {
 	updateHabitsDate,
 	findDateInArray,
 	getHabitData,
+	getStreaks,
 };

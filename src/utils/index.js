@@ -23,6 +23,7 @@ export {
 	updateHabitsDate,
 	findDateInArray,
 	getHabitData,
+	getStreaks,
 } from "./helpers";
 export {
 	addNewHabitsHandler,

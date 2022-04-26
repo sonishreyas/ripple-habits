@@ -16,10 +16,7 @@ const CalendarContent = ({ _id }) => {
 				currentDate !== stopDate &&
 					currentDate.setDate(currentDate.getDate() + 1);
 			}
-			habitsDispatch({
-				type: "UPDATE_STREAK",
-				payload: { habits: { _id: _id, streak: {} } },
-			});
+
 			habitsDispatch({
 				type: "UPDATE_COMPLETED_DATE",
 				payload: { habits: { _id: _id, completedAt: dateArray } },
