@@ -10,11 +10,16 @@ const CalendarContent = ({ _id }) => {
 			let dateArray = [];
 			let currentDate = value[0];
 			let stopDate = value[1];
+
 			while (currentDate <= stopDate) {
 				dateArray = [...dateArray, new Date(currentDate).toJSON().slice(0, 10)];
 				currentDate !== stopDate &&
 					currentDate.setDate(currentDate.getDate() + 1);
 			}
+			habitsDispatch({
+				type: "UPDATE_STREAK",
+				payload: { habits: { _id: _id, streak: {} } },
+			});
 			habitsDispatch({
 				type: "UPDATE_COMPLETED_DATE",
 				payload: { habits: { _id: _id, completedAt: dateArray } },

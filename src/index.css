@@ -337,6 +337,10 @@ input:checked + .slider::before {
   color: var(--tertiary-color);
   border-radius: var(--br-4);
 }
+
+.number-font {
+  font-family: 'Urbanist', sans-serif;
+}
 @media screen and (max-width: 1180px) {
   .header-nav-icon {
       display: none;

@@ -89,6 +89,8 @@ const getDataFromId = (items, data) =>
 		updatedAt,
 	}));
 
+const getHabitData = (habits, _id) => habits.filter((item) => item._id === _id);
+
 const getDataFromPlaylist = (arr, element) =>
 	arr.reduce(
 		(prev, curr) => (curr._id === element ? { ...prev, ...curr } : { ...prev }),
@@ -148,4 +150,5 @@ export {
 	trimData,
 	updateHabitsDate,
 	findDateInArray,
+	getHabitData,
 };
