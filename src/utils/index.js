@@ -20,6 +20,8 @@ export {
 	getVideosFromPlaylist,
 	getCountValue,
 	trimData,
+	updateHabitsDate,
+	findDateInArray,
 } from "./helpers";
 export {
 	addNewHabitsHandler,

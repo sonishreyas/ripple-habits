@@ -109,6 +109,29 @@ const getCountValue = (value) =>
 
 const trimData = (data) =>
 	(data.length < 40 ? data : data.substr(0, 38)) + "..";
+
+const updateHabitsDate = (data, updatedData) =>
+	data.reduce(
+		(prev, curr) =>
+			curr._id === updatedData._id
+				? [
+						...prev,
+						{
+							...curr,
+							completedAt: [...curr.completedAt, ...updatedData.completedAt],
+						},
+				  ]
+				: [...prev, ...curr],
+		[]
+	);
+
+const findDateInArray = (data, date, _id) => {
+	return data
+		.filter((item) => item._id === _id)[0]
+		?.completedAt?.find((item) => item === date) !== undefined
+		? true
+		: false;
+};
 export {
 	removeFromArray,
 	presentInWatchLater,
@@ -123,4 +146,6 @@ export {
 	getVideosFromPlaylist,
 	getCountValue,
 	trimData,
+	updateHabitsDate,
+	findDateInArray,
 };

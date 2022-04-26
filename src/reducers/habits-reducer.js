@@ -1,3 +1,5 @@
+import { updateHabitsDate } from "../utils";
+
 /**
  * Reducer function to handle habits state
  * @param {Object} habitsState State values of habits
@@ -26,11 +28,15 @@ const habitsReducer = (habitsState, { type, payload }) => {
 				...habitsState,
 				newHabit: { ...habitsState.newHabit, ...payload.newHabit },
 			};
-
 		case "UPDATE_HABITS":
 			return {
 				...habitsState,
 				habits: [...payload.habits],
+			};
+		case "UPDATE_COMPLETED_DATE":
+			return {
+				...habitsState,
+				habits: updateHabitsDate(habitsState.habits, payload.habits),
 			};
 		case "RESET_FORM":
 			return {
