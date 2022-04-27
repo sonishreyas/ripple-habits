@@ -54,7 +54,7 @@ const Banner = () => {
 					></i>
 				))}
 			</div>
-			<div className="flex-row justify-content-space-between align-center banner-nav-btn-container w-100 mx-10">
+			<div className="flex-row justify-content-space-between align-center banner-nav-btn-container w-100 px-10">
 				<i className="fa-solid fa-circle-chevron-left" onClick={prevSlide}></i>
 				<i className="fa-solid fa-circle-chevron-right" onClick={nextSlide}></i>
 			</div>

@@ -16,17 +16,17 @@ const Category = () => {
 				<i className="fa-solid fa-angle-down"></i>
 			</section>
 			<ul className="rui-drawer-content--list no-list p-5">
-				<li className="rui-drawer-content">
+				<li className="rui-drawer-content my-5">
 					<NavLink to={"/habits/all"} className={getActiveClass}>
 						All Habits
 					</NavLink>
 				</li>
-				<li className="rui-drawer-content">
+				<li className="rui-drawer-content my-5">
 					<NavLink to={"/habits/archive"} className={getActiveClass}>
 						Archive
 					</NavLink>
 				</li>
-				<li className="rui-drawer-content">
+				<li className="rui-drawer-content my-5">
 					<section className="flex-row justify-content-space-between align-center flex-wrap">
 						<span className="rui-drawer-content--text list-heading text-cta-color h4">
 							AREAS

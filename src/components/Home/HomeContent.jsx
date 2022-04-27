@@ -2,7 +2,7 @@ import { Banner, Quotes } from ".";
 
 const HomeContent = () => {
 	return (
-		<main className="main flex-row justify-content-center align-center flex-wrap">
+		<main className="main flex-column justify-content-center align-center">
 			<Banner />
 			<Quotes />
 		</main>
