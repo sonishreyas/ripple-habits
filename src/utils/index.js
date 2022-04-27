@@ -8,7 +8,7 @@ export {
 } from "./authentication";
 export {
 	removeFromArray,
-	presentInWatchLater,
+	removeFromDateArray,
 	presentInArray,
 	presentObjInArray,
 	removeObjFromArray,

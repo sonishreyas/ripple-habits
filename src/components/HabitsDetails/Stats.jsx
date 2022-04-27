@@ -4,7 +4,7 @@ import { getHabitData, getStreaks } from "../../utils";
 const Stats = ({ _id }) => {
 	const { habitsState } = useHabits();
 	const habitData = getHabitData(habitsState.habits, _id)[0];
-	const { streak, maxStreak } = getStreaks(habitData.completedAt);
+	const { streak, maxStreak } = getStreaks(habitData.completedAt.sort());
 	return (
 		<div className="flex-column justify-content-center align-center flex-gap-1 w-100">
 			<div className="basic-card flex-column justify-content-center align-center text-center p-5 b-radius-2 flex-gap-1">

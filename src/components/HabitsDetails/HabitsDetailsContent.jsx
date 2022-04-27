@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { CalendarContent, Stats } from ".";
+import { CalendarContent, Stats, Streaks } from ".";
 
 const HabitsDetailsContent = () => {
 	const { habitId } = useParams();
@@ -7,6 +7,7 @@ const HabitsDetailsContent = () => {
 		<main className="main flex-column flex-gap-1 habits-content-container justify-content-center align-center m-5">
 			<Stats _id={habitId} />
 			<CalendarContent _id={habitId} />
+			<Streaks _id={habitId} />
 		</main>
 	);
 };

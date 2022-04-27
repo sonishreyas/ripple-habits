@@ -17,14 +17,13 @@ const removeObjFromArray = (arr, element) =>
 	arr.filter((item) => item.addressId !== element);
 
 /**
- * Check if its present in the array
- * @param {Array} arr
- * @param {any} element Element that needs to be searched from arr
- * @returns true if element is found else false
+ * Removed element from array
+ * @param {Array} arr Array from which we need to remove an element
+ * @param {any} element Element that needs to be removed from arr
+ * @returns Array with element removed
  */
-
-const presentInWatchLater = (arr, element) =>
-	arr?.find((item) => item._id === element) !== undefined ? true : false;
+const removeFromDateArray = (arr, element) =>
+	arr.filter((item) => item !== element);
 
 /**
  * Check if its present in the array
@@ -89,7 +88,8 @@ const getDataFromId = (items, data) =>
 		updatedAt,
 	}));
 
-const getHabitData = (habits, _id) => habits.filter((item) => item._id === _id);
+const getHabitData = (habits, _id) =>
+	habits?.filter((item) => item._id === _id);
 
 const getDataFromPlaylist = (arr, element) =>
 	arr.reduce(
@@ -113,21 +113,27 @@ const trimData = (data) =>
 	(data.length < 40 ? data : data.substr(0, 38)) + "..";
 
 const updateHabitsDate = (data, updatedData) =>
-	data.reduce(
-		(prev, curr) =>
-			curr._id === updatedData._id
-				? [
-						...prev,
-						{
-							...curr,
-							completedAt: [
-								...new Set([...curr.completedAt, ...updatedData.completedAt]),
-							],
-						},
-				  ]
-				: [...prev, ...curr],
-		[]
-	);
+	data.reduce((prev, curr) => {
+		if (curr._id === updatedData._id) {
+			if (presentInArray(curr.completedAt, updatedData.completedAt)) {
+				const completedAtArray = removeFromDateArray(
+					curr.completedAt,
+					updatedData.completedAt
+				).sort();
+				return [...prev, { ...curr, completedAt: [...completedAtArray] }];
+			} else {
+				return [
+					...prev,
+					{
+						...curr,
+						completedAt: [...curr.completedAt, updatedData.completedAt].sort(),
+					},
+				];
+			}
+		} else {
+			return [...prev, ...curr];
+		}
+	}, []);
 
 const findDateInArray = (data, date, _id) => {
 	return data
@@ -181,7 +187,7 @@ const getStreaks = (habitData) => {
 
 export {
 	removeFromArray,
-	presentInWatchLater,
+	removeFromDateArray,
 	presentInArray,
 	presentObjInArray,
 	removeObjFromArray,
