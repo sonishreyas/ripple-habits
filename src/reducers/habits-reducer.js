@@ -1,4 +1,8 @@
-import { updateHabitsDate } from "../utils";
+import {
+	updateHabitsDate,
+	addNoteToHabits,
+	deleteNoteFromHabits,
+} from "../utils";
 
 /**
  * Reducer function to handle habits state
@@ -37,6 +41,16 @@ const habitsReducer = (habitsState, { type, payload }) => {
 			return {
 				...habitsState,
 				habits: updateHabitsDate(habitsState.habits, payload.habits),
+			};
+		case "ADD_NOTE":
+			return {
+				...habitsState,
+				habits: addNoteToHabits(habitsState.habits, payload.habits),
+			};
+		case "DELETE_NOTE":
+			return {
+				...habitsState,
+				habits: deleteNoteFromHabits(habitsState.habits, payload.habits),
 			};
 		case "RESET_FORM":
 			return {

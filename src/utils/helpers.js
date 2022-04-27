@@ -185,6 +185,35 @@ const getStreaks = (habitData) => {
 	return { streak, maxStreak };
 };
 
+const addNoteToHabits = (data, updatedData) =>
+	data.reduce(
+		(prev, curr) =>
+			curr._id === updatedData._id
+				? [
+						...prev,
+						{ ...curr, notes: [...curr.notes, { ...updatedData.notes }] },
+				  ]
+				: [...prev, ...curr],
+		[]
+	);
+
+const deleteNoteFromHabits = (data, updatedData) =>
+	data.reduce(
+		(prev, curr) =>
+			curr._id === updatedData._id
+				? [
+						...prev,
+						{
+							...curr,
+							notes: curr.notes.filter(
+								(item) => item._id !== updatedData.notes._id
+							),
+						},
+				  ]
+				: [...prev, ...curr],
+		[]
+	);
+
 export {
 	removeFromArray,
 	removeFromDateArray,
@@ -203,4 +232,6 @@ export {
 	findDateInArray,
 	getHabitData,
 	getStreaks,
+	addNoteToHabits,
+	deleteNoteFromHabits,
 };

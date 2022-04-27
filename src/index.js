@@ -16,6 +16,7 @@ import {
 	CategoryProvider,
 	ArchiveProvider,
 } from "./context";
+import { NotesProvider } from "./context/notes-context";
 // Call make Server
 makeServer();
 ReactDOM.render(
@@ -30,7 +31,9 @@ ReactDOM.render(
 									<CategoryProvider>
 										<ArchiveProvider>
 											<ProfileProvider>
-												<App />
+												<NotesProvider>
+													<App />
+												</NotesProvider>
 											</ProfileProvider>
 										</ArchiveProvider>
 									</CategoryProvider>

@@ -17,6 +17,7 @@ const defaultHabitsState = {
 		startDate: "",
 		startTime: "",
 		completedAt: [],
+		notes: [],
 	},
 };
 const HabitsContext = createContext({});

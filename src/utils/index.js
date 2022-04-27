@@ -24,6 +24,8 @@ export {
 	findDateInArray,
 	getHabitData,
 	getStreaks,
+	addNoteToHabits,
+	deleteNoteFromHabits,
 } from "./helpers";
 export {
 	addNewHabitsHandler,

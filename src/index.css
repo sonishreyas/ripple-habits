@@ -235,7 +235,7 @@ input:checked + .slider::before {
 
 /* || Calendar Styling */
 .react-calendar {
-  width: 350px;
+  width: 100%;
   max-width: 100%;
   background: var(--secondary-background-color);
   border: 0.1rem solid var(--secondary-background-color);
@@ -341,6 +341,44 @@ input:checked + .slider::before {
 .number-font {
   font-family: 'Urbanist', sans-serif;
 }
+
+.habits-detail-container {
+  width: 60%;
+  height: max-content;
+}
+.habit-basic-card {
+  height: 8rem;
+  width: 100%;
+}
+.streak-container {
+  background-color: var(--cta-color);
+  color: var(--tertiary-color);
+  height: max-content;
+  width: 30%;
+  border-radius: var(--br-2);
+}
+
+.habit-streak-basic-card {
+  width: max(8rem, max-content);
+}
+
+.note-date {
+  width: 8rem;
+  height: max-content;
+  background-color: var(--primary-color);
+  border-radius: var(--br-2);
+  line-height: 2.2rem;
+}
+
+.note-card {
+  width: 100%;
+  height: max-content;
+  background-color: var(--primary-color);
+  border-radius: var(--br-2);
+}
+.h-max-content {
+  height: max-content;
+}
 @media screen and (max-width: 1180px) {
   .header-nav-icon {
       display: none;
@@ -419,5 +457,8 @@ input:checked + .slider::before {
 @media screen and (max-width: 650px)  {
   .input-form .input-container {
     margin: var(--m-5);
+  }
+  .habits-detail-container {
+    width: 100%;
   }
 }

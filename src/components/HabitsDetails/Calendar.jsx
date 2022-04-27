@@ -5,7 +5,6 @@ import { findDateInArray } from "../../utils";
 const CalendarContent = ({ _id }) => {
 	const [value, onChange] = useState(new Date());
 	const { habitsState, habitsDispatch } = useHabits();
-	console.log(habitsState);
 	useEffect(() => {
 		if (value) {
 			habitsDispatch({
