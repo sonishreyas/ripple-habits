@@ -8,7 +8,7 @@ export {
 } from "./authentication";
 export {
 	removeFromArray,
-	presentInWatchLater,
+	removeFromDateArray,
 	presentInArray,
 	presentObjInArray,
 	removeObjFromArray,
@@ -20,6 +20,12 @@ export {
 	getVideosFromPlaylist,
 	getCountValue,
 	trimData,
+	updateHabitsDate,
+	findDateInArray,
+	getHabitData,
+	getStreaks,
+	addNoteToHabits,
+	deleteNoteFromHabits,
 } from "./helpers";
 export {
 	addNewHabitsHandler,

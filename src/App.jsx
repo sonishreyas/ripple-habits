@@ -1,6 +1,13 @@
 import { Routes, Route, Outlet } from "react-router-dom";
 import "./App.css";
-import { Home, Authentication, Habits, Profile, Dashboard } from "./pages";
+import {
+	Home,
+	Authentication,
+	Habits,
+	Profile,
+	Dashboard,
+	HabitsDetails,
+} from "./pages";
 import { Header, Footer, NavBar, NewHabitModal } from "./components";
 import { useNavbar, useHabits } from "./context";
 import { RequireAuth } from "./utils";
@@ -37,6 +44,7 @@ function App() {
 						</RequireAuth>
 					}
 				/>
+				<Route path="/habit/:habitId" element={<HabitsDetails />} />
 			</Routes>
 			<Outlet />
 			{showNavbar && <NavBar />}

@@ -5,6 +5,7 @@ import {
 	removeFromArchiveHandler,
 } from "../../utils";
 import { EmptyHabits } from "./EmptyHabits";
+import { Link } from "react-router-dom";
 // import { useState, useEffect } from "react";
 const HabitsCard = ({ data, archive }) => {
 	const { setShowHabitsModal, habitsDispatch } = useHabits();
@@ -43,7 +44,10 @@ const HabitsCard = ({ data, archive }) => {
 						className="basic-card w-100 flex-row align-center justify-content-space-between m-5 p-10 flex-gap-1 b-radius-2 card-shadow"
 						key={_id}
 					>
-						<div className="flex-row align-center flex-gap-1">
+						<Link
+							to={`/habit/${_id}`}
+							className="no-link-decoration flex-row align-center flex-gap-1"
+						>
 							<span
 								className="flex-row align-center flex-gap-1"
 								style={{ color: color }}
@@ -52,7 +56,7 @@ const HabitsCard = ({ data, archive }) => {
 								<i className={`${icon} icons`}></i>
 							</span>
 							<h4 className="text-bold">{title}</h4>
-						</div>
+						</Link>
 						<div className="flex-row">
 							<i
 								className="fa-solid fa-pen-to-square p-5 cursor-pointer social icons"

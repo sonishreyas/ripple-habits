@@ -17,14 +17,13 @@ const removeObjFromArray = (arr, element) =>
 	arr.filter((item) => item.addressId !== element);
 
 /**
- * Check if its present in the array
- * @param {Array} arr
- * @param {any} element Element that needs to be searched from arr
- * @returns true if element is found else false
+ * Removed element from array
+ * @param {Array} arr Array from which we need to remove an element
+ * @param {any} element Element that needs to be removed from arr
+ * @returns Array with element removed
  */
-
-const presentInWatchLater = (arr, element) =>
-	arr?.find((item) => item._id === element) !== undefined ? true : false;
+const removeFromDateArray = (arr, element) =>
+	arr.filter((item) => item !== element);
 
 /**
  * Check if its present in the array
@@ -89,6 +88,9 @@ const getDataFromId = (items, data) =>
 		updatedAt,
 	}));
 
+const getHabitData = (habits, _id) =>
+	habits?.filter((item) => item._id === _id);
+
 const getDataFromPlaylist = (arr, element) =>
 	arr.reduce(
 		(prev, curr) => (curr._id === element ? { ...prev, ...curr } : { ...prev }),
@@ -109,9 +111,112 @@ const getCountValue = (value) =>
 
 const trimData = (data) =>
 	(data.length < 40 ? data : data.substr(0, 38)) + "..";
+
+const updateHabitsDate = (data, updatedData) =>
+	data.reduce((prev, curr) => {
+		if (curr._id === updatedData._id) {
+			if (presentInArray(curr.completedAt, updatedData.completedAt)) {
+				const completedAtArray = removeFromDateArray(
+					curr.completedAt,
+					updatedData.completedAt
+				).sort();
+				return [...prev, { ...curr, completedAt: [...completedAtArray] }];
+			} else {
+				return [
+					...prev,
+					{
+						...curr,
+						completedAt: [...curr.completedAt, updatedData.completedAt].sort(),
+					},
+				];
+			}
+		} else {
+			return [...prev, ...curr];
+		}
+	}, []);
+
+const findDateInArray = (data, date, _id) => {
+	return data
+		.filter((item) => item._id === _id)[0]
+		?.completedAt?.find((item) => item === date) !== undefined
+		? true
+		: false;
+};
+
+const getStreaks = (habitData) => {
+	let streak = [];
+	let maxStreak = 0;
+	let start = 0;
+	let end = 0;
+	let numOfDays = 0;
+	for (let i = 0; i < habitData.length; i++) {
+		if (start === 0) {
+			start = habitData[i];
+		}
+		if (
+			new Date(habitData[i + 1]).getDate() -
+				new Date(habitData[i]).getDate() ===
+				1 &&
+			i < habitData.length - 1
+		) {
+			numOfDays++;
+		} else if (i === habitData.length - 1 && start === 0) {
+			numOfDays++;
+			end = habitData[i];
+			start = habitData[i];
+			streak.push({ start: start, end: end, streak: numOfDays });
+			start = 0;
+			end = 0;
+			if (maxStreak < numOfDays) {
+				maxStreak = numOfDays;
+			}
+		} else {
+			numOfDays++;
+			end = habitData[i];
+			streak.push({ start: start, end: end, streak: numOfDays });
+			start = 0;
+			end = 0;
+			if (maxStreak < numOfDays) {
+				maxStreak = numOfDays;
+			}
+			numOfDays = 0;
+		}
+	}
+	return { streak, maxStreak };
+};
+
+const addNoteToHabits = (data, updatedData) =>
+	data.reduce(
+		(prev, curr) =>
+			curr._id === updatedData._id
+				? [
+						...prev,
+						{ ...curr, notes: [...curr.notes, { ...updatedData.notes }] },
+				  ]
+				: [...prev, ...curr],
+		[]
+	);
+
+const deleteNoteFromHabits = (data, updatedData) =>
+	data.reduce(
+		(prev, curr) =>
+			curr._id === updatedData._id
+				? [
+						...prev,
+						{
+							...curr,
+							notes: curr.notes.filter(
+								(item) => item._id !== updatedData.notes._id
+							),
+						},
+				  ]
+				: [...prev, ...curr],
+		[]
+	);
+
 export {
 	removeFromArray,
-	presentInWatchLater,
+	removeFromDateArray,
 	presentInArray,
 	presentObjInArray,
 	removeObjFromArray,
@@ -123,4 +228,10 @@ export {
 	getVideosFromPlaylist,
 	getCountValue,
 	trimData,
+	updateHabitsDate,
+	findDateInArray,
+	getHabitData,
+	getStreaks,
+	addNoteToHabits,
+	deleteNoteFromHabits,
 };
