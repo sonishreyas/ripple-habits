@@ -5,4 +5,8 @@ export const categories = [
 		_id: uuid(),
 		name: "Lifestyle",
 	},
+	{
+		_id: uuid(),
+		name: "Sports",
+	},
 ];
